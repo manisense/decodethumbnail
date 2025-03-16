@@ -1,102 +1,36 @@
-# AI-Powered YouTube Thumbnail Generator & Editor
-
-A full-stack Next.js application that allows users to generate YouTube thumbnails using OpenAI's DALL-E 3 or Google's Imagen 3 and edit them with a built-in editor.
-
-## Features
-
-- **AI-Powered Thumbnail Generation**: Create professional YouTube thumbnails from text prompts using OpenAI's DALL-E 3 or Google's Imagen 3.
-- **AI Model Comparison**: Compare results from both OpenAI and Google side by side.
-- **Built-in Editor**: Edit generated thumbnails with text, shapes, and uploaded images.
-- **Export**: Download your finished thumbnails in high quality.
-
-## Tech Stack
-
-- **Frontend**: Next.js (App Router), React, TypeScript, Tailwind CSS
-- **Backend**: Next.js API Routes, OpenAI SDK, Google Generative AI API
-- **Image Editing**: Fabric.js for canvas-based editing
-- **Additional Tools**: 
-  - axios for API calls
-  - html2canvas for exporting thumbnails
-  - zustand for state management
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-### Prerequisites
+First, run the development server:
 
-- Node.js 18+ and npm
-- OpenAI API key
-- Google API key (for Imagen 3)
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/youtube-thumbnail-generator.git
-   cd youtube-thumbnail-generator
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Create a `.env.local` file in the root directory and add your API keys:
-   ```
-   OPENAI_API_KEY=your_openai_api_key_here
-   GOOGLE_API_KEY=your_google_api_key_here
-   ```
-
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Usage
-
-1. **Choose an AI Model**:
-   - Select between OpenAI DALL-E 3 or Google Imagen 3 for image generation.
-   - You can also compare results from both models side by side.
-
-2. **Generate a Thumbnail**:
-   - Enter a title, subtitle, keywords, color palette, and style.
-   - Click "Generate Thumbnail" to create an AI-generated thumbnail.
-
-3. **Edit the Thumbnail**:
-   - Add text, shapes, or upload images.
-   - Drag, resize, and customize elements.
-   - Use the preview mode to see how your thumbnail will look without editing controls.
-
-4. **Export**:
-   - Click "Export" to download your finished thumbnail as a PNG file.
-
-## Project Structure
-
-```
-src/
-├── app/
-│   ├── page.tsx                # Main UI with input form + canvas
-│   ├── api/
-│   │   ├── generate/route.ts   # OpenAI API route
-│   │   └── generate-imagen/route.ts # Google Imagen API route
-│   └── lib/
-│       ├── store.ts            # Zustand store for state
-│       └── fabricUtils.ts      # Fabric.js helpers
-├── components/
-│   ├── CanvasEditor.tsx        # Fabric.js canvas + controls
-│   ├── GenerateForm.tsx        # Input form
-│   ├── AIModelSelector.tsx     # AI model selection component
-│   └── ModelComparison.tsx     # Component to compare AI models
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## License
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Acknowledgements
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- [OpenAI](https://openai.com/) for the DALL-E 3 API
-- [Google](https://ai.google.dev/) for the Imagen 3 API
-- [Fabric.js](http://fabricjs.com/) for the canvas manipulation library
-- [Next.js](https://nextjs.org/) for the React framework
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

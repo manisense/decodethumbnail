@@ -1,89 +1,166 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-sm">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex justify-between items-center">
-          <Link href="/" className="flex items-center space-x-2">
+    <header className="bg-white border-b border-gray-100">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
             <svg 
-              xmlns="http://www.w3.org/2000/svg" 
+              className="w-8 h-8 text-black" 
               viewBox="0 0 24 24" 
-              fill="currentColor" 
-              className="w-8 h-8 text-red-600"
-            >
-              <path d="M4.5 4.5a3 3 0 00-3 3v9a3 3 0 003 3h8.25a3 3 0 003-3v-9a3 3 0 00-3-3H4.5zM19.94 18.75l-2.69-2.69V7.94l2.69-2.69c.944-.945 2.56-.276 2.56 1.06v11.38c0 1.336-1.616 2.005-2.56 1.06z" />
-            </svg>
-            <span className="font-bold text-xl">ThumbAI</span>
-          </Link>
-
-          {/* Mobile menu button */}
-          <button 
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
               fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor" 
-              className="w-6 h-6"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <path 
+                d="M14.5 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V7.5L14.5 2Z" 
+                stroke="currentColor" 
+                strokeWidth="2" 
                 strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} 
+                strokeLinejoin="round"
+              />
+              <path 
+                d="M14 2V8H20" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+              <path 
+                d="M10 13L8 15L10 17" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+              <path 
+                d="M14 13L16 15L14 17" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
               />
             </svg>
-          </button>
+            <span className="ml-2 text-lg font-semibold">YT Thumbnail AI</span>
+          </Link>
 
-          {/* Desktop navigation */}
-          <nav className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link href="/" className="text-gray-600 hover:text-black">
               Home
             </Link>
-            <Link href="/templates" className="text-gray-700 hover:text-blue-600 font-medium">
+            <Link href="/templates" className="text-gray-600 hover:text-black">
               Templates
             </Link>
-            <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium">
+            <Link href="/about" className="text-gray-600 hover:text-black">
               About
             </Link>
           </nav>
+
+          {/* Auth Buttons (Desktop) */}
+          <div className="hidden md:flex items-center space-x-3">
+            <Link 
+              href="/signin" 
+              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-black"
+            >
+              Sign In
+            </Link>
+            <Link 
+              href="/signup" 
+              className="px-4 py-2 text-sm font-medium text-white bg-black rounded-lg hover:bg-gray-800"
+            >
+              Sign Up
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? (
+              <svg 
+                className="w-6 h-6" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth="2" 
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg 
+                className="w-6 h-6" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth="2" 
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </button>
         </div>
 
-        {/* Mobile navigation */}
+        {/* Mobile Menu */}
         {isMenuOpen && (
-          <nav className="mt-4 md:hidden">
-            <div className="flex flex-col space-y-3">
+          <div className="md:hidden py-4 border-t border-gray-100">
+            <nav className="flex flex-col space-y-4 pb-4">
               <Link 
                 href="/" 
-                className="text-gray-700 hover:text-blue-600 font-medium py-2"
+                className="text-gray-600 hover:text-black"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 href="/templates" 
-                className="text-gray-700 hover:text-blue-600 font-medium py-2"
+                className="text-gray-600 hover:text-black"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Templates
               </Link>
               <Link 
                 href="/about" 
-                className="text-gray-700 hover:text-blue-600 font-medium py-2"
+                className="text-gray-600 hover:text-black"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
               </Link>
+            </nav>
+            <div className="flex space-x-3 pt-4 border-t border-gray-100">
+              <Link 
+                href="/signin" 
+                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-black"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sign In
+              </Link>
+              <Link 
+                href="/signup" 
+                className="px-4 py-2 text-sm font-medium text-white bg-black rounded-lg hover:bg-gray-800"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sign Up
+              </Link>
             </div>
-          </nav>
+          </div>
         )}
       </div>
     </header>
